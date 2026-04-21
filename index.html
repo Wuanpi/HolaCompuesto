@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Consumo API</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #2c2c2c;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: #3b3b3b;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+      margin-bottom: 15px;
+    }
+
+    p {
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Datos desde la API</h2>
+    <p><strong>Mensaje:</strong> <span id="mensaje">Cargando...</span></p>
+    <p><strong>Autor:</strong> <span id="autor">Cargando...</span></p>
+    <p><strong>Fecha:</strong> <span id="fecha">Cargando...</span></p>
+  </div>
+
+  <script>
+    async function obtenerDatos() {
+      try {
+        const respuesta = await fetch('');
+        const datos = await respuesta.json();
+
+        document.getElementById('mensaje').textContent = datos.mensaje;
+        document.getElementById('autor').textContent = datos.autor;
+        document.getElementById('fecha').textContent = datos.fecha;
+
+      } catch (error) {
+        console.error('Error:', error);
+        document.getElementById('mensaje').textContent = 'Error al cargar';
+      }
+    }
+
+    obtenerDatos();
+  </script>
+
+</body>
+</html>
