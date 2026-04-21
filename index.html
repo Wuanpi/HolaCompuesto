@@ -5,20 +5,23 @@
     <title>Hola Mundo Python</title>
 </head>
 <body>
-    <h1 id="mensaje">.</h1>
-    <p id="autor"></p>
-    <p id="fecha"></p>
+    <h1 id="mensaje">Cargando...</h1>
+    <p id="autor">Cargando...</p>
+    <p id="fecha">Cargando...</p>
 
-    <button onclick="fetchData()">Cargar Datos</button>
+    <button id="cargarBtn" onclick="fetchData()">Cargar Datos</button>
 
     <script>
-        fetch('http://127.0.0.1:8000/api/datos')
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('mensaje').innerText = data.mensaje;
-                document.getElementById('autor').innerText = data.autor;
-                document.getElementById('fecha').innerText = data.fecha;
-            });
+                function fetchData() {
+                    fetch('http://127.0.0.1:8000/api/datos')
+                        .then(response => response.json())
+                        .then(data => {
+                            document.getElementById('mensaje').innerText = data.mensaje;
+                            document.getElementById('autor').innerText = data.autor;
+                            document.getElementById('fecha').innerText = data.fecha;
+                        });
+                }
+            ;
     </script>
 </body>
 </html>
